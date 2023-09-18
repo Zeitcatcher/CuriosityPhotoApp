@@ -56,15 +56,47 @@
 		D93B5A652AB8024B00048DED /* CuriosityPhotoApp */ = {
 			isa = PBXGroup;
 			children = (
-				D93B5A662AB8024B00048DED /* AppDelegate.swift */,
-				D93B5A682AB8024B00048DED /* SceneDelegate.swift */,
-				D93B5A6A2AB8024B00048DED /* ViewController.swift */,
-				D93B5A6C2AB8024B00048DED /* Main.storyboard */,
-				D93B5A6F2AB8024C00048DED /* Assets.xcassets */,
-				D93B5A712AB8024C00048DED /* LaunchScreen.storyboard */,
-				D93B5A742AB8024C00048DED /* Info.plist */,
+				D93B5A7A2AB8029000048DED /* App */,
+				D93B5A7B2AB8029600048DED /* ViewControllers */,
+				D93B5A7C2AB8029E00048DED /* Storyboards */,
+				D93B5A7D2AB802B900048DED /* Resources */,
 			);
 			path = CuriosityPhotoApp;
+			sourceTree = "<group>";
+		};
+		D93B5A7A2AB8029000048DED /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D93B5A662AB8024B00048DED /* AppDelegate.swift */,
+				D93B5A682AB8024B00048DED /* SceneDelegate.swift */,
+				D93B5A742AB8024C00048DED /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D93B5A7B2AB8029600048DED /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D93B5A6A2AB8024B00048DED /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D93B5A7C2AB8029E00048DED /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D93B5A6C2AB8024B00048DED /* Main.storyboard */,
+				D93B5A712AB8024C00048DED /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D93B5A7D2AB802B900048DED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D93B5A6F2AB8024C00048DED /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,12 +321,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NTDP5U69GA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CuriosityPhotoApp/Info.plist;
+				INFOPLIST_FILE = CuriosityPhotoApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +334,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftbook.CuriosityPhotoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +352,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NTDP5U69GA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CuriosityPhotoApp/Info.plist;
+				INFOPLIST_FILE = CuriosityPhotoApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +365,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftbook.CuriosityPhotoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
