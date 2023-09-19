@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D927B3242AB924F6008B22F4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D927B3232AB924F6008B22F4 /* Photo.swift */; };
 		D93B5A672AB8024B00048DED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B5A662AB8024B00048DED /* AppDelegate.swift */; };
 		D93B5A692AB8024B00048DED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B5A682AB8024B00048DED /* SceneDelegate.swift */; };
 		D93B5A6B2AB8024B00048DED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B5A6A2AB8024B00048DED /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D927B3232AB924F6008B22F4 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		D93B5A632AB8024B00048DED /* CuriosityPhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuriosityPhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93B5A662AB8024B00048DED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D93B5A682AB8024B00048DED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D927B3252AB924FA008B22F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D927B3232AB924F6008B22F4 /* Photo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D93B5A5A2AB8024B00048DED = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 				D93B5A7B2AB8029600048DED /* ViewControllers */,
 				D93B5A7C2AB8029E00048DED /* Storyboards */,
 				D93B5A7D2AB802B900048DED /* Resources */,
+				D927B3252AB924FA008B22F4 /* Models */,
 			);
 			path = CuriosityPhotoApp;
 			sourceTree = "<group>";
@@ -170,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D927B3242AB924F6008B22F4 /* Photo.swift in Sources */,
 				D93B5A6B2AB8024B00048DED /* ViewController.swift in Sources */,
 				D93B5A672AB8024B00048DED /* AppDelegate.swift in Sources */,
 				D93B5A692AB8024B00048DED /* SceneDelegate.swift in Sources */,
