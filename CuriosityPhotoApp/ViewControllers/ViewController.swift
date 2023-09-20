@@ -8,12 +8,24 @@
 import UIKit
 
 class CollectionViewController: UIViewController {
-
+    var photo: Photo!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
 
+//MARK: - Private Methods
+extension CollectionViewController {
+    private func fetchPhoto() {
+        NetworkManager.shared.fetch(Photo.self, from: Photo.URL.nasa.rawValue) { [ weak self ] result in
+            switch result {
+            case .success(let photo):
+                self?.photo = photo
+                //дописать обновления item
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
