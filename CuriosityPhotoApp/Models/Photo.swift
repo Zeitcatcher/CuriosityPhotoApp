@@ -5,7 +5,9 @@
 //  Created by Arseniy Oksenoyt on 9/18/23.
 //
 
-struct Photo {
+
+
+struct Photo: Codable {
     let camera: Camera
     let imageURL: String
     let earthDate: String
@@ -17,9 +19,16 @@ struct Photo {
         case earthDate = "earth_date"
         case rover = "rover"
     }
+    
+    enum URL: String {
+        case nasa =
+        """
+        https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=SzPwsv57rRbHu6c1h0mVfHEuiG4W3hUICvmNgb7R
+        """
+    }
 }
 
-struct Camera {
+struct Camera: Codable {
     let id: Int
     let cameraName: String
     let roverId: String
@@ -28,12 +37,12 @@ struct Camera {
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case cameraName = "name"
-        case roverID = "rover_id"
-        case fullName = "full_name"
+        case roverId = "rover_id"
+        case cameraFullName = "full_name"
     }
 }
 
-struct Rover {
+struct Rover: Codable {
     let name: String
     let landingDate: String
     let launchDate: String
