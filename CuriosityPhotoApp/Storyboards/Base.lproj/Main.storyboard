@@ -43,16 +43,26 @@
                                                         <constraint firstAttribute="width" secondItem="0a9-cI-SI4" secondAttribute="height" multiplier="1:1" id="QRO-XM-Bwg"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTc-Pz-hsJ">
+                                                    <rect key="frame" x="3" y="110" width="128" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="0a9-cI-SI4" secondAttribute="bottom" constant="3" id="0cG-JE-bB4"/>
                                                 <constraint firstItem="0a9-cI-SI4" firstAttribute="top" secondItem="GUg-M3-Qk2" secondAttribute="top" constant="3" id="DWf-PU-vYS"/>
                                                 <constraint firstItem="0a9-cI-SI4" firstAttribute="leading" secondItem="GUg-M3-Qk2" secondAttribute="leading" constant="3" id="JN7-nQ-pu4"/>
+                                                <constraint firstAttribute="bottom" secondItem="FTc-Pz-hsJ" secondAttribute="bottom" constant="3" id="cxO-dq-u9E"/>
+                                                <constraint firstAttribute="trailing" secondItem="FTc-Pz-hsJ" secondAttribute="trailing" constant="3" id="gBo-Is-4UO"/>
                                                 <constraint firstAttribute="trailing" secondItem="0a9-cI-SI4" secondAttribute="trailing" constant="3" id="rcq-5j-zTE"/>
+                                                <constraint firstItem="FTc-Pz-hsJ" firstAttribute="leading" secondItem="GUg-M3-Qk2" secondAttribute="leading" constant="3" id="uM6-fJ-jLc"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="cameraImageView" destination="0a9-cI-SI4" id="PkS-su-niA"/>
+                                            <outlet property="cameraLabel" destination="FTc-Pz-hsJ" id="703-J2-QRa"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
