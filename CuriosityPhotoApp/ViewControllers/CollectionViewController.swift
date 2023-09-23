@@ -11,15 +11,20 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBOutlet weak var CamerasCollectionVewController: UICollectionView!
     
-    var photo: Photo!
+    var photos: [Photo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchPhotos()
     }
     
     // MARK: - Table view data source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        var uniqueCameras = Set<String>()
+        for photo in photos {
+            uniqueCameras.insert(photo.camera.cameraName)
+        }
+        return uniqueCameras.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -31,17 +36,19 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         else {
             return UICollectionViewCell()
         }
+        let photo = photos[indexPath.item]
+        cell.configue(with: photo)
         return cell
     }
 }
 
 //MARK: - Private Methods
 extension CollectionViewController {
-    private func fetchPhoto() {
-        NetworkManager.shared.fetch(Photo.self, from: Photo.URL.nasa.rawValue) { [ weak self ] result in
+    private func fetchPhotos() {
+        NetworkManager.shared.fetch([Photo].self, from: Photo.URL.nasa.rawValue) { [ weak self ] result in
             switch result {
-            case .success(let photo):
-                self?.photo = photo
+            case .success(let photos):
+                self?.photos = photos
                 //дописать обновления item
             case .failure(let error):
                 print(error)

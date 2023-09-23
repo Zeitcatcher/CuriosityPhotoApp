@@ -6,6 +6,8 @@
 //
 import Foundation
 
+
+
 enum NetworkError: Error {
     case invalidURL
     case noData
@@ -36,7 +38,8 @@ class NetworkManager {
                 DispatchQueue.main.async {
                     complition(.success(type))
                 }
-            } catch {
+            } catch let error {
+                print("Decoding Error: \(error)")
                 complition(.failure(.decodingError))
             }
         }.resume()

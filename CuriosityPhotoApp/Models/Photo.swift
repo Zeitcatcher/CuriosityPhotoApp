@@ -5,7 +5,9 @@
 //  Created by Arseniy Oksenoyt on 9/18/23.
 //
 
-
+struct PhotoCollection: Codable {
+    let photos: [Photo]
+}
 
 struct Photo: Codable {
     let camera: Camera
