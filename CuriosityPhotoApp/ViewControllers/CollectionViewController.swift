@@ -20,11 +20,12 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // MARK: - Table view data source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var uniqueCameras = Set<String>()
-        for photo in photos {
-            uniqueCameras.insert(photo.camera.cameraName)
-        }
-        return uniqueCameras.count
+//        var uniqueCameras = Set<String>()
+//        for photo in photos {
+//            uniqueCameras.insert(photo.camera.cameraName)
+//        }
+//        return uniqueCameras.count
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -45,11 +46,12 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 //MARK: - Private Methods
 extension CollectionViewController {
     private func fetchPhotos() {
-        NetworkManager.shared.fetch([Photo].self, from: Photo.URL.nasa.rawValue) { [ weak self ] result in
+        NetworkManager.shared.fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { [ weak self ] result in
             switch result {
-            case .success(let photos):
-                self?.photos = photos
-                //дописать обновления item
+            case .success(let photoCollection):
+                print("test")
+                self?.photos = photoCollection.photos
+                self?.CamerasCollectionVewController.reloadData()
             case .failure(let error):
                 print(error)
             }

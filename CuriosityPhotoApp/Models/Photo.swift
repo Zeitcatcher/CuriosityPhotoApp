@@ -5,6 +5,14 @@
 //  Created by Arseniy Oksenoyt on 9/18/23.
 //
 
+
+enum JsonURL: String {
+    case nasa =
+    """
+    https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=SzPwsv57rRbHu6c1h0mVfHEuiG4W3hUICvmNgb7R
+    """
+}
+
 struct PhotoCollection: Codable {
     let photos: [Photo]
 }
@@ -21,19 +29,12 @@ struct Photo: Codable {
         case earthDate = "earth_date"
         case rover = "rover"
     }
-    
-    enum URL: String {
-        case nasa =
-        """
-        https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=SzPwsv57rRbHu6c1h0mVfHEuiG4W3hUICvmNgb7R
-        """
-    }
 }
 
 struct Camera: Codable {
-    let id: Int
+    let id: Int?
     let cameraName: String
-    let roverId: String
+    let roverId: Int?
     let cameraFullName: String
     
     enum CodingKeys: String, CodingKey {
