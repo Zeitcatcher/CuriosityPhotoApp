@@ -67,10 +67,10 @@ extension CollectionViewController {
     }
     
     private func setupCollectionView() {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
-//        layout.collectionView?.backgroundColor = .red
-//        camerasCollectionVewController.backgroundColor = .red
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.collectionView?.backgroundColor = .red
+        camerasCollectionVewController.backgroundColor = .red
         camerasCollectionVewController.delegate = self
         camerasCollectionVewController.dataSource = self
     }
