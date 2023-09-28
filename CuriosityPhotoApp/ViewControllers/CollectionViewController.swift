@@ -27,7 +27,7 @@ extension CollectionViewController: UICollectionViewDelegate {
         NetworkManager.shared.fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { [ weak self ] result in
             switch result {
             case .success(let photoCollection):
-                print("Photo fetched succesfully")
+                print("Photos fetched succesfully")
                 self?.photos = photoCollection.photos
                 self?.camerasCollectionVewController.reloadData()
             case .failure(let error):
@@ -50,10 +50,14 @@ extension CollectionViewController: UICollectionViewDelegate {
 extension CollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var uniqueCameras = Set<String>()
+//        var cycleCount = 0
         for photo in photos {
             uniqueCameras.insert(photo.camera.cameraName)
+//            cycleCount += 1
         }
         print("Number of items in section: \(uniqueCameras.count)")
+        print("Count is \(count)")
+        print("uniqueCameras is \(uniqueCameras.count)")
         return uniqueCameras.count
     }
         

@@ -20,10 +20,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cameraLabel: UILabel!
     
     func configue(with photo: Photo) {
+        self.backgroundColor = .green
         cameraLabel.text = photo.camera.cameraName
         imageURL = URL(string: photo.imageURL)
         cameraImageView.layer.cornerRadius = 20
-        self.backgroundColor = .green
     }
 }
 
