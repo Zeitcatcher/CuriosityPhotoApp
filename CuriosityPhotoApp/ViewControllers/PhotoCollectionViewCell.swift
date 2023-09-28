@@ -23,6 +23,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         cameraLabel.text = photo.camera.cameraName
         imageURL = URL(string: photo.imageURL)
         cameraImageView.layer.cornerRadius = 20
+        self.backgroundColor = .green
     }
 }
 
