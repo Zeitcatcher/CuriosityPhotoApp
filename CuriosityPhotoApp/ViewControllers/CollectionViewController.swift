@@ -42,22 +42,20 @@ extension CollectionViewController: UICollectionViewDelegate {
         camerasCollectionVewController.collectionViewLayout = layout
         camerasCollectionVewController.delegate = self
         camerasCollectionVewController.dataSource = self
+//        camerasCollectionVewController.clipsToBounds = true
+//        camerasCollectionVewController.translatesAutoresizingMaskIntoConstraints = false
+        
+//        NSLayoutConstraint.activate(<#T##constraints: [NSLayoutConstraint]##[NSLayoutConstraint]#>)
     }
-    
 }
 
 // MARK: - UICollectionViewDataSource
 extension CollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var uniqueCameras = Set<String>()
-//        var cycleCount = 0
         for photo in photos {
             uniqueCameras.insert(photo.camera.cameraName)
-//            cycleCount += 1
         }
-        print("Number of items in section: \(uniqueCameras.count)")
-        print("Count is \(count)")
-        print("uniqueCameras is \(uniqueCameras.count)")
         return uniqueCameras.count
     }
         
@@ -70,10 +68,8 @@ extension CollectionViewController: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-        let photo = photos[indexPath.item]
+        let photo = photos[indexPath.item + Int.random(in: 0...10)]
         cell.configue(with: photo)
-        count += 1
-        print("test 2 success: cellForItemAt indexPath. Count: \(count)")
         return cell
     }
 }
@@ -81,6 +77,6 @@ extension CollectionViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegetaFlowLayout
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: UIScreen.main.bounds.width / 1.5)
+        CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: UIScreen.main.bounds.width / 1.2)
     }
 }

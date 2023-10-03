@@ -20,10 +20,12 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cameraLabel: UILabel!
     
     func configue(with photo: Photo) {
-        self.backgroundColor = .green
+//        self.backgroundColor = .green
         cameraLabel.text = photo.camera.cameraName
         imageURL = URL(string: photo.imageURL)
         cameraImageView.layer.cornerRadius = 20
+//        cameraImageView.contentMode = .scaleAspectFill
+        setupViews()
     }
 }
 
@@ -52,5 +54,37 @@ extension PhotoCollectionViewCell {
                 print(error)
             }
         }
+    }
+    
+    private func setupViews() {
+        // Configure cameraImageView
+        cameraImageView.contentMode = .scaleAspectFill
+        cameraImageView.clipsToBounds = true
+        
+        // Configure cameraLabel
+        cameraLabel.font = UIFont.systemFont(ofSize: 20)
+        cameraLabel.textAlignment = .center
+        cameraLabel.numberOfLines = 0 // Allow multiple lines
+        
+        // Add cameraImageView and cameraLabel to the cell's contentView
+        contentView.addSubview(cameraImageView)
+        contentView.addSubview(cameraLabel)
+        
+        // Define constraints
+        cameraImageView.translatesAutoresizingMaskIntoConstraints = false
+        cameraLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            cameraImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            cameraImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3),
+            cameraImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            cameraImageView.bottomAnchor.constraint(equalTo: cameraLabel.topAnchor, constant: -8),
+        ])
+        
+        NSLayoutConstraint.activate([
+            cameraLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3),
+            cameraLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            cameraLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+        ])
     }
 }
