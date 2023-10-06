@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Cameras Collection View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CollectionViewController" customModule="CuriosityPhotoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CamerasCollectionViewController" customModule="CuriosityPhotoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Jmr-XZ-OIO" customClass="CameraCollectionViewCell" customModule="CuriosityPhotoApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cameraCell" id="Jmr-XZ-OIO" customClass="CamerasCollectionViewCell" customModule="CuriosityPhotoApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="58" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GUg-M3-Qk2">
@@ -69,7 +69,7 @@
                     <navigationItem key="navigationItem" id="gKq-pk-RYn"/>
                     <connections>
                         <outlet property="camerasCollectionVewController" destination="63C-77-ft9" id="T5s-r0-LEY"/>
-                        <segue destination="xYF-jx-VXl" kind="show" identifier="detailsSegue" id="gM2-c7-RlD"/>
+                        <segue destination="xYF-jx-VXl" kind="presentation" identifier="detailsSegue" id="gM2-c7-RlD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -81,16 +81,68 @@
             <objects>
                 <viewController id="xYF-jx-VXl" customClass="PhotoCollectionViewController" customModule="CuriosityPhotoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nru-ON-Q8l">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-wq-l8m">
+                                <rect key="frame" x="20" y="276.66666666666669" width="390" height="645.33333333333326"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xQH-Se-N6k">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="7eO-x0-eiC" customClass="PhotosCollectionViewCell" customModule="CuriosityPhotoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T7M-TN-Boh">
+                                            <rect key="frame" x="0.0" y="0.0" width="42" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uFk-5T-GhX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="91"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaO-CA-3zh">
+                                                    <rect key="frame" x="0.0" y="107" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="GaO-CA-3zh" secondAttribute="bottom" id="Auh-ez-IKP"/>
+                                                <constraint firstAttribute="trailing" secondItem="GaO-CA-3zh" secondAttribute="trailing" id="Jd9-E4-lip"/>
+                                                <constraint firstItem="GaO-CA-3zh" firstAttribute="top" secondItem="uFk-5T-GhX" secondAttribute="bottom" constant="16" id="QP0-d6-b6a"/>
+                                                <constraint firstAttribute="trailing" secondItem="uFk-5T-GhX" secondAttribute="trailing" id="X6l-si-2Z9"/>
+                                                <constraint firstItem="uFk-5T-GhX" firstAttribute="top" secondItem="T7M-TN-Boh" secondAttribute="top" id="mlA-eE-fIN"/>
+                                                <constraint firstItem="GaO-CA-3zh" firstAttribute="leading" secondItem="T7M-TN-Boh" secondAttribute="leading" id="rOb-fj-dpO"/>
+                                                <constraint firstItem="uFk-5T-GhX" firstAttribute="leading" secondItem="T7M-TN-Boh" secondAttribute="leading" id="rkj-pR-vWL"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="uFk-5T-GhX" id="b3f-Y3-Ns5"/>
+                                            <outlet property="photoLabel" destination="GaO-CA-3zh" id="uWc-i6-iMP"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="slG-Cv-5l0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Y6y-wq-l8m" firstAttribute="leading" secondItem="slG-Cv-5l0" secondAttribute="leading" constant="20" id="3ff-vb-QJD"/>
+                            <constraint firstItem="slG-Cv-5l0" firstAttribute="trailing" secondItem="Y6y-wq-l8m" secondAttribute="trailing" constant="20" id="490-NN-EmG"/>
+                            <constraint firstItem="Y6y-wq-l8m" firstAttribute="height" secondItem="Nru-ON-Q8l" secondAttribute="height" multiplier="0.7" id="g28-FW-yAM"/>
+                            <constraint firstItem="Y6y-wq-l8m" firstAttribute="bottom" secondItem="slG-Cv-5l0" secondAttribute="bottom" id="hTd-Vc-S4i"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UTE-lA-rIn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2t-45-kPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1873" y="-3"/>
+            <point key="canvasLocation" x="1872.5581395348836" y="-3.218884120171674"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7GG-RT-ip0">

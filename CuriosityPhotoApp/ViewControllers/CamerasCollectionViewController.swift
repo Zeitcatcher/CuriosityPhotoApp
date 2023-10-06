@@ -7,12 +7,11 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController {
+class CamerasCollectionViewController: UIViewController {
     
     @IBOutlet weak var camerasCollectionVewController: UICollectionView!
     
     var photos: [Photo] = []
-    var count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +26,12 @@ class CollectionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let photoCollectionView = segue.destination as? PhotoCollectionViewController else { return }
-        guard let indexPath = camerasCollectionVewController.indexPathsForSelectedItems?.first else { return }
-        
+        photoCollectionView.cameraPhotos = photos
     }
 }
 
 //MARK: - Private Methods
-extension CollectionViewController: UICollectionViewDelegate {
+extension CamerasCollectionViewController: UICollectionViewDelegate {
     private func fetchPhotos() {
         NetworkManager.shared.fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { [ weak self ] result in
             switch result {
@@ -57,7 +55,7 @@ extension CollectionViewController: UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-extension CollectionViewController: UICollectionViewDataSource {
+extension CamerasCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var uniqueCameras = Set<String>()
         for photo in photos {
@@ -69,9 +67,9 @@ extension CollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "cell",
+                withReuseIdentifier: "cameraCell",
                 for: indexPath
-            ) as? CameraCollectionViewCell
+            ) as? CamerasCollectionViewCell
         else {
             return UICollectionViewCell()
         }
@@ -82,7 +80,7 @@ extension CollectionViewController: UICollectionViewDataSource {
 }
 
 //MARK: - UICollectionViewDelegetaFlowLayout
-extension CollectionViewController: UICollectionViewDelegateFlowLayout {
+extension CamerasCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: UIScreen.main.bounds.width / 1.2)
     }
