@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotoCollectionViewCell: UICollectionViewCell {
+class CameraCollectionViewCell: UICollectionViewCell {
     
     private var imageURL: URL? {
         didSet {
@@ -20,17 +20,15 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cameraLabel: UILabel!
     
     func configue(with photo: Photo) {
-//        self.backgroundColor = .green
         cameraLabel.text = photo.camera.cameraName
         imageURL = URL(string: photo.imageURL)
         cameraImageView.layer.cornerRadius = 20
-//        cameraImageView.contentMode = .scaleAspectFill
         setupViews()
     }
 }
 
 //MARK: - Private methods
-extension PhotoCollectionViewCell {
+extension CameraCollectionViewCell {
     private func updateImage() {
         guard let imageURL = imageURL else { return }
         getImage(from: imageURL) { [weak self ] result in

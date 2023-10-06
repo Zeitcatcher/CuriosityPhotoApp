@@ -19,6 +19,17 @@ class CollectionViewController: UIViewController {
         fetchPhotos()
         setupCollectionView()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = photos[indexPath.item]
+        performSegue(withIdentifier: "detailsSegue", sender: photo)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let photoCollectionView = segue.destination as? PhotoCollectionViewController else { return }
+        guard let indexPath = camerasCollectionVewController.indexPathsForSelectedItems?.first else { return }
+        
+    }
 }
 
 //MARK: - Private Methods
@@ -42,10 +53,6 @@ extension CollectionViewController: UICollectionViewDelegate {
         camerasCollectionVewController.collectionViewLayout = layout
         camerasCollectionVewController.delegate = self
         camerasCollectionVewController.dataSource = self
-//        camerasCollectionVewController.clipsToBounds = true
-//        camerasCollectionVewController.translatesAutoresizingMaskIntoConstraints = false
-        
-//        NSLayoutConstraint.activate(<#T##constraints: [NSLayoutConstraint]##[NSLayoutConstraint]#>)
     }
 }
 
@@ -64,11 +71,11 @@ extension CollectionViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "cell",
                 for: indexPath
-            ) as? PhotoCollectionViewCell
+            ) as? CameraCollectionViewCell
         else {
             return UICollectionViewCell()
         }
-        let photo = photos[indexPath.item + Int.random(in: 0...10)]
+        let photo = photos[indexPath.item]
         cell.configue(with: photo)
         return cell
     }
