@@ -139,6 +139,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UTE-lA-rIn"/>
+                    <connections>
+                        <outlet property="photoCollectionViewController" destination="Y6y-wq-l8m" id="ybm-ss-yev"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2t-45-kPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

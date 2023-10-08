@@ -11,7 +11,12 @@ class CamerasCollectionViewController: UIViewController {
     
     @IBOutlet weak var camerasCollectionVewController: UICollectionView!
     
-    var photos: [Photo] = []
+    var photos: [Photo] = [] {
+        didSet {
+            countUniqueCameras()
+        }
+    }
+    var uniqueCameras = Set<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +25,7 @@ class CamerasCollectionViewController: UIViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = photos[indexPath.item]
-        performSegue(withIdentifier: "detailsSegue", sender: photo)
+        performSegue(withIdentifier: "detailsSegue", sender: photos)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,6 +36,12 @@ class CamerasCollectionViewController: UIViewController {
 
 //MARK: - Private Methods
 extension CamerasCollectionViewController: UICollectionViewDelegate {
+    private func countUniqueCameras() {
+        photos.forEach { photo in
+            uniqueCameras.insert(photo.camera.cameraName)
+        }
+    }
+    
     private func fetchPhotos() {
         NetworkManager.shared.fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { [ weak self ] result in
             switch result {
@@ -57,11 +67,7 @@ extension CamerasCollectionViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension CamerasCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var uniqueCameras = Set<String>()
-        for photo in photos {
-            uniqueCameras.insert(photo.camera.cameraName)
-        }
-        return uniqueCameras.count
+        uniqueCameras.count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
