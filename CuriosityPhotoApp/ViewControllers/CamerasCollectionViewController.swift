@@ -13,10 +13,12 @@ class CamerasCollectionViewController: UIViewController {
     
     var photos: [Photo] = [] {
         didSet {
-            countUniqueCameras()
+            photos.forEach { uniqueCameras.insert( $0.camera.cameraName) }
         }
     }
+    
     var uniqueCameras = Set<String>()
+    var tappedCameraLabelText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,23 +27,22 @@ class CamerasCollectionViewController: UIViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let currentCell = collectionView.cellForItem(at: indexPath) as? CamerasCollectionViewCell else { return }
+        tappedCameraLabelText = currentCell.cameraLabel.text ?? ""
         performSegue(withIdentifier: "detailsSegue", sender: photos)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let photoCollectionView = segue.destination as? PhotoCollectionViewController else { return }
         photoCollectionView.cameraPhotos = photos
+        print("#photos: ", photos.count)
+        photoCollectionView.cameraName = tappedCameraLabelText
+        print("tappedCameraLabelText: ", tappedCameraLabelText)
     }
 }
 
 //MARK: - Private Methods
 extension CamerasCollectionViewController: UICollectionViewDelegate {
-    private func countUniqueCameras() {
-        photos.forEach { photo in
-            uniqueCameras.insert(photo.camera.cameraName)
-        }
-    }
-    
     private func fetchPhotos() {
         NetworkManager.shared.fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { [ weak self ] result in
             switch result {
