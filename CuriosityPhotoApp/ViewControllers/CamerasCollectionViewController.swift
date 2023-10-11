@@ -34,6 +34,7 @@ class CamerasCollectionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let photoCollectionView = segue.destination as? PhotoCollectionViewController else { return }
+        photoCollectionView.configure(with: tappedCameraLabelText)
         photoCollectionView.cameraPhotos = photos
         print("#photos: ", photos.count)
         photoCollectionView.cameraName = tappedCameraLabelText

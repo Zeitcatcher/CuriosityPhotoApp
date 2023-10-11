@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cameras Collection View Controller-->
+        <!--test-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CamerasCollectionViewController" customModule="CuriosityPhotoApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,7 +66,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="63C-77-ft9" secondAttribute="bottom" constant="120" id="nYG-6P-yB3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gKq-pk-RYn"/>
+                    <navigationItem key="navigationItem" title="test" largeTitleDisplayMode="always" id="gKq-pk-RYn">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="jeR-AK-Ozh"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="camerasCollectionVewController" destination="63C-77-ft9" id="T5s-r0-LEY"/>
                         <segue destination="xYF-jx-VXl" kind="presentation" identifier="detailsSegue" id="gM2-c7-RlD"/>
@@ -95,31 +97,24 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="7eO-x0-eiC" customClass="PhotosCollectionViewCell" customModule="CuriosityPhotoApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T7M-TN-Boh">
-                                            <rect key="frame" x="0.0" y="0.0" width="42" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uFk-5T-GhX">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFk-5T-GhX">
                                                     <rect key="frame" x="0.0" y="0.0" width="42" height="91"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaO-CA-3zh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaO-CA-3zh">
                                                     <rect key="frame" x="0.0" y="107" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="GaO-CA-3zh" secondAttribute="bottom" id="Auh-ez-IKP"/>
-                                                <constraint firstAttribute="trailing" secondItem="GaO-CA-3zh" secondAttribute="trailing" id="Jd9-E4-lip"/>
-                                                <constraint firstItem="GaO-CA-3zh" firstAttribute="top" secondItem="uFk-5T-GhX" secondAttribute="bottom" constant="16" id="QP0-d6-b6a"/>
-                                                <constraint firstAttribute="trailing" secondItem="uFk-5T-GhX" secondAttribute="trailing" id="X6l-si-2Z9"/>
-                                                <constraint firstItem="uFk-5T-GhX" firstAttribute="top" secondItem="T7M-TN-Boh" secondAttribute="top" id="mlA-eE-fIN"/>
-                                                <constraint firstItem="GaO-CA-3zh" firstAttribute="leading" secondItem="T7M-TN-Boh" secondAttribute="leading" id="rOb-fj-dpO"/>
-                                                <constraint firstItem="uFk-5T-GhX" firstAttribute="leading" secondItem="T7M-TN-Boh" secondAttribute="leading" id="rkj-pR-vWL"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="photoImageView" destination="uFk-5T-GhX" id="b3f-Y3-Ns5"/>
@@ -128,12 +123,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW9-ZW-HfI">
+                                <rect key="frame" x="16" y="128" width="398" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="slG-Cv-5l0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Y6y-wq-l8m" firstAttribute="leading" secondItem="slG-Cv-5l0" secondAttribute="leading" constant="20" id="3ff-vb-QJD"/>
                             <constraint firstItem="slG-Cv-5l0" firstAttribute="trailing" secondItem="Y6y-wq-l8m" secondAttribute="trailing" constant="20" id="490-NN-EmG"/>
+                            <constraint firstItem="rW9-ZW-HfI" firstAttribute="top" secondItem="slG-Cv-5l0" secondAttribute="top" constant="128" id="BMS-De-lui"/>
+                            <constraint firstItem="rW9-ZW-HfI" firstAttribute="leading" secondItem="slG-Cv-5l0" secondAttribute="leading" constant="16" id="KOV-71-pct"/>
+                            <constraint firstItem="slG-Cv-5l0" firstAttribute="trailing" secondItem="rW9-ZW-HfI" secondAttribute="trailing" constant="16" id="eye-mV-VeV"/>
                             <constraint firstItem="Y6y-wq-l8m" firstAttribute="height" secondItem="Nru-ON-Q8l" secondAttribute="height" multiplier="0.7" id="g28-FW-yAM"/>
                             <constraint firstItem="Y6y-wq-l8m" firstAttribute="bottom" secondItem="slG-Cv-5l0" secondAttribute="bottom" id="hTd-Vc-S4i"/>
                         </constraints>
@@ -141,6 +145,7 @@
                     <navigationItem key="navigationItem" id="UTE-lA-rIn"/>
                     <connections>
                         <outlet property="photoCollectionViewController" destination="Y6y-wq-l8m" id="ybm-ss-yev"/>
+                        <outlet property="photoLabel" destination="rW9-ZW-HfI" id="9L2-zU-ASb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2t-45-kPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -152,8 +157,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pvv-to-Hj1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uOh-SJ-HhZ">
-                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="uOh-SJ-HhZ">
+                        <rect key="frame" x="0.0" y="59" width="430" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

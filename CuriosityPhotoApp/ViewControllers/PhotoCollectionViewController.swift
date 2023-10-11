@@ -9,46 +9,29 @@ import UIKit
 
 class PhotoCollectionViewController: UIViewController {
     
-    var cameraPhotos: [Photo] = []
+    @IBOutlet weak var photoCollectionViewController: UICollectionView!
     
-    var cameraName = "" {
-        didSet {
-            filterCameraPhotos()
-            print("#cameraPhotos: ", cameraPhotos.count)
-            print("cameraName: \(cameraName)")
-            print("#filteredPhotos: ", filteredPhotos.count)
-        }
+    @IBOutlet weak var photoLabel: UILabel!
+    
+    var cameraPhotos: [Photo] = []
+    var filteredPhotos: [Photo] {
+        cameraPhotos.filter { $0.camera.cameraName == cameraName }
     }
     
-    var filteredPhotos: [Photo] = []
-    
-    @IBOutlet weak var photoCollectionViewController: UICollectionView!
+    var cameraName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        photoLabel.text = "cameraName"
     }
 }
 
 //MARK: - Private Methods
 extension PhotoCollectionViewController: UICollectionViewDelegate {
     private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
         photoCollectionViewController.delegate = self
         photoCollectionViewController.dataSource = self
-    }
-    
-    private func filterCameraPhotos() {
-        print("filtering started. Number to filter: \(cameraPhotos.count)")
-        cameraPhotos.forEach { photo in
-            if photo.camera.cameraName == cameraName {
-                filteredPhotos.append(photo)
-                print("filtered successfuly")
-            }
-        }
     }
 }
 
@@ -71,5 +54,12 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
         let photo = filteredPhotos[indexPath.item]
         cell.configure(with: photo)
         return cell
+    }
+}
+
+extension PhotoCollectionViewController {
+    func configure(with cameraName: String) {
+        print(cameraName)
+//        photoLabel.text = "cameraName"
     }
 }

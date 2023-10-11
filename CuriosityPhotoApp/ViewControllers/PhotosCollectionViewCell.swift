@@ -74,15 +74,16 @@ extension PhotosCollectionViewCell {
         
         NSLayoutConstraint.activate([
             photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3),
-            photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            photoImageView.bottomAnchor.constraint(equalTo: photoLabel.topAnchor, constant: -8),
-            photoImageView.widthAnchor.constraint(equalToConstant: 100),
-            photoImageView.heightAnchor.constraint(equalToConstant: 200),
+            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            photoImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.50),
+            photoImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 4),
+//            photoImageView.bottomAnchor.constraint(equalTo: photoLabel.topAnchor, constant: -8)
         ])
         
         NSLayoutConstraint.activate([
-            photoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3),
+            photoLabel.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 8),
+            photoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             photoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             photoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
