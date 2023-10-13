@@ -8,22 +8,27 @@
 import UIKit
 
 class PhotoCollectionViewController: UIViewController {
-    
     @IBOutlet weak var photoCollectionViewController: UICollectionView!
-    
     @IBOutlet weak var photoLabel: UILabel!
     
     var cameraPhotos: [Photo] = []
-    var filteredPhotos: [Photo] {
-        cameraPhotos.filter { $0.camera.cameraName == cameraName }
-    }
-    
+    var filteredPhotos: [Photo] = []
     var cameraName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        photoLabel.text = "cameraName"
+        photoLabel.text = cameraName
+    }
+    
+    func configure(with photos: [Photo], and name: String) {
+        cameraPhotos = photos
+        cameraName = name
+        filter()
+    }
+    
+    private func filter() {
+        filteredPhotos = cameraPhotos.filter { $0.camera.cameraName == cameraName }
     }
 }
 
@@ -54,12 +59,5 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
         let photo = filteredPhotos[indexPath.item]
         cell.configure(with: photo)
         return cell
-    }
-}
-
-extension PhotoCollectionViewController {
-    func configure(with cameraName: String) {
-        print(cameraName)
-//        photoLabel.text = "cameraName"
     }
 }
