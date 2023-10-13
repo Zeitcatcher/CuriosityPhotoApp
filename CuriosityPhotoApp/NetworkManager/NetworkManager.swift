@@ -31,14 +31,26 @@ class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let type = try decoder.decode(T.self, from: data)
                 DispatchQueue.main.async {
                     complition(.success(type))
                 }
-            } catch {
+            } catch let error {
+                print("Decoding Error: \(error)")
                 complition(.failure(.decodingError))
             }
         }.resume()
+    }
+    
+    func fetchImage(from url: URL, complition: @escaping(Result<Data, NetworkError>) -> Void) {
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: url) else {
+                complition(.failure(.noData))
+                return
+            }
+            DispatchQueue.main.async {
+                complition(.success(imageData))
+            }
+        }
     }
 }
