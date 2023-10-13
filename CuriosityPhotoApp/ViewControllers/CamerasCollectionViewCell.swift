@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CameraCollectionViewCell: UICollectionViewCell {
+class CamerasCollectionViewCell: UICollectionViewCell {
     
     private var imageURL: URL? {
         didSet {
@@ -28,19 +28,7 @@ class CameraCollectionViewCell: UICollectionViewCell {
 }
 
 //MARK: - Private methods
-extension CameraCollectionViewCell {
-    private func updateImage() {
-        guard let imageURL = imageURL else { return }
-        getImage(from: imageURL) { [weak self ] result in
-            switch result {
-            case .success(let image):
-                self?.cameraImageView.image = image
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
+extension CamerasCollectionViewCell {
     private func getImage(from url: URL, complition: @escaping(Result<UIImage, Error>) -> Void) {
         NetworkManager.shared.fetchImage(from: url) { result in
             switch result {
@@ -48,6 +36,18 @@ extension CameraCollectionViewCell {
                 guard let uiImage = UIImage(data: imageData) else { return }
                 print("Image from network: ", url.lastPathComponent)
                 complition(.success(uiImage))
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func updateImage() {
+        guard let imageURL = imageURL else { return }
+        getImage(from: imageURL) { [weak self ] result in
+            switch result {
+            case .success(let image):
+                self?.cameraImageView.image = image
             case .failure(let error):
                 print(error)
             }

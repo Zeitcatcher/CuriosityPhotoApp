@@ -7,12 +7,18 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController {
+class CamerasCollectionViewController: UIViewController {
     
     @IBOutlet weak var camerasCollectionVewController: UICollectionView!
     
-    var photos: [Photo] = []
-    var count = 0
+    var photos: [Photo] = [] {
+        didSet {
+            photos.forEach { uniqueCameras.insert( $0.camera.cameraName) }
+        }
+    }
+    
+    var uniqueCameras = Set<String>()
+    var tappedCameraLabelText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +27,23 @@ class CollectionViewController: UIViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = photos[indexPath.item]
-        performSegue(withIdentifier: "detailsSegue", sender: photo)
+        guard let currentCell = collectionView.cellForItem(at: indexPath) as? CamerasCollectionViewCell else { return }
+        tappedCameraLabelText = currentCell.cameraLabel.text ?? ""
+        performSegue(withIdentifier: "detailsSegue", sender: photos)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let photoCollectionView = segue.destination as? PhotoCollectionViewController else { return }
-        guard let indexPath = camerasCollectionVewController.indexPathsForSelectedItems?.first else { return }
-        
+        photoCollectionView.configure(with: photos, and: tappedCameraLabelText)
+//        photoCollectionView.cameraPhotos = photos
+//        print("#photos: ", photos.count)
+//        photoCollectionView.cameraName = tappedCameraLabelText
+//        print("tappedCameraLabelText: ", tappedCameraLabelText)
     }
 }
 
 //MARK: - Private Methods
-extension CollectionViewController: UICollectionViewDelegate {
+extension CamerasCollectionViewController: UICollectionViewDelegate {
     private func fetchPhotos() {
         NetworkManager.shared.fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { [ weak self ] result in
             switch result {
@@ -57,21 +67,17 @@ extension CollectionViewController: UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-extension CollectionViewController: UICollectionViewDataSource {
+extension CamerasCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var uniqueCameras = Set<String>()
-        for photo in photos {
-            uniqueCameras.insert(photo.camera.cameraName)
-        }
-        return uniqueCameras.count
+        uniqueCameras.count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "cell",
+                withReuseIdentifier: "cameraCell",
                 for: indexPath
-            ) as? CameraCollectionViewCell
+            ) as? CamerasCollectionViewCell
         else {
             return UICollectionViewCell()
         }
@@ -82,7 +88,7 @@ extension CollectionViewController: UICollectionViewDataSource {
 }
 
 //MARK: - UICollectionViewDelegetaFlowLayout
-extension CollectionViewController: UICollectionViewDelegateFlowLayout {
+extension CamerasCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: UIScreen.main.bounds.width / 1.2)
     }
