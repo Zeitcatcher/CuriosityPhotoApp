@@ -81,7 +81,7 @@
         <!--Photo Collection View Controller-->
         <scene sceneID="NrA-eN-h2c">
             <objects>
-                <viewController id="xYF-jx-VXl" customClass="PhotoCollectionViewController" customModule="CuriosityPhotoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xYF-jx-VXl" customClass="PhotoCollectionViewController" customModule="CuriosityPhotoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nru-ON-Q8l">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
