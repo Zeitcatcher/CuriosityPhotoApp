@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotosCollectionViewCell: UICollectionViewCell {
+final class PhotosCollectionViewCell: UICollectionViewCell {
     
     private var imageURL: URL? {
         didSet {
@@ -16,8 +16,8 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var photoLabel: UILabel!
+    @IBOutlet private weak var photoImageView: UIImageView!
+    @IBOutlet private weak var photoLabel: UILabel!
     
     func configure(with photo: Photo) {
         photoLabel.text = photo.camera.cameraName

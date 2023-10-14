@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CamerasCollectionViewController: UIViewController {
+final class CamerasCollectionViewController: UIViewController {
     
-    @IBOutlet weak var camerasCollectionVewController: UICollectionView!
+    @IBOutlet private weak var camerasCollectionVewController: UICollectionView!
     
-    var photos: [Photo] = [] {
+    private var photos: [Photo] = [] {
         didSet {
             photos.forEach { uniqueCameras.insert( $0.camera.cameraName) }
         }
@@ -26,24 +26,6 @@ class CamerasCollectionViewController: UIViewController {
         setupCollectionView()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let currentCell = collectionView.cellForItem(at: indexPath) as? CamerasCollectionViewCell else { return }
-        tappedCameraLabelText = currentCell.cameraLabel.text ?? ""
-        performSegue(withIdentifier: "detailsSegue", sender: photos)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let photoCollectionView = segue.destination as? PhotoCollectionViewController else { return }
-        photoCollectionView.configure(with: photos, and: tappedCameraLabelText)
-//        photoCollectionView.cameraPhotos = photos
-//        print("#photos: ", photos.count)
-//        photoCollectionView.cameraName = tappedCameraLabelText
-//        print("tappedCameraLabelText: ", tappedCameraLabelText)
-    }
-}
-
-//MARK: - Private Methods
-extension CamerasCollectionViewController: UICollectionViewDelegate {
     private func fetchPhotos() {
         NetworkManager.shared.fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { [ weak self ] result in
             switch result {
@@ -64,6 +46,17 @@ extension CamerasCollectionViewController: UICollectionViewDelegate {
         camerasCollectionVewController.delegate = self
         camerasCollectionVewController.dataSource = self
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let currentCell = collectionView.cellForItem(at: indexPath) as? CamerasCollectionViewCell else { return }
+        tappedCameraLabelText = currentCell.cameraLabel.text ?? ""
+        performSegue(withIdentifier: "detailsSegue", sender: photos)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let photoCollectionView = segue.destination as? PhotoCollectionViewController else { return }
+        photoCollectionView.configure(with: photos, and: tappedCameraLabelText)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -81,8 +74,7 @@ extension CamerasCollectionViewController: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-        let photo = photos[indexPath.item]
-        cell.configue(with: photo)
+        cell.configue(with: photos[indexPath.item])
         return cell
     }
 }

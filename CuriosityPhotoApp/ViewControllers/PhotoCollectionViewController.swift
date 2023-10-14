@@ -7,13 +7,13 @@
 
 import UIKit
 
-class PhotoCollectionViewController: UIViewController {
-    @IBOutlet weak var photoCollectionViewController: UICollectionView!
-    @IBOutlet weak var photoLabel: UILabel!
+final class PhotoCollectionViewController: UIViewController {
     
-    var cameraPhotos: [Photo] = []
-    var filteredPhotos: [Photo] = []
-    var cameraName = ""
+    @IBOutlet private weak var photoCollectionViewController: UICollectionView!
+    @IBOutlet private weak var photoLabel: UILabel!
+    
+    private var filteredPhotos: [Photo] = []
+    private var cameraName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,26 +22,22 @@ class PhotoCollectionViewController: UIViewController {
     }
     
     func configure(with photos: [Photo], and name: String) {
-        cameraPhotos = photos
         cameraName = name
-        filter()
+        filter(with: photos)
     }
     
-    private func filter() {
-        filteredPhotos = cameraPhotos.filter { $0.camera.cameraName == cameraName }
-    }
-}
-
-//MARK: - Private Methods
-extension PhotoCollectionViewController: UICollectionViewDelegate {
+    //MARK: - Private Methods
     private func setupCollectionView() {
         photoCollectionViewController.delegate = self
         photoCollectionViewController.dataSource = self
     }
+    
+    private func filter(with photos: [Photo]) {
+        filteredPhotos = photos.filter { $0.camera.cameraName == cameraName }
+    }
 }
-
-// MARK: - UICollectionViewDataSource
-extension PhotoCollectionViewController: UICollectionViewDataSource {
+//MARK: - Collection View Delegate, Collection View DataSource
+extension PhotoCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         filteredPhotos.count
     }

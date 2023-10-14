@@ -6,6 +6,13 @@
 //
 import Foundation
 
+enum JsonURL: String {
+    case nasa =
+    """
+    https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=SzPwsv57rRbHu6c1h0mVfHEuiG4W3hUICvmNgb7R
+    """
+}
+
 enum NetworkError: Error {
     case invalidURL
     case noData

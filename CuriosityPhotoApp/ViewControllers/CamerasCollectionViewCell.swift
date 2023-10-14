@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CamerasCollectionViewCell: UICollectionViewCell {
+final class CamerasCollectionViewCell: UICollectionViewCell {
     
     private var imageURL: URL? {
         didSet {
@@ -16,7 +16,7 @@ class CamerasCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @IBOutlet weak var cameraImageView: UIImageView!
+    @IBOutlet private weak var cameraImageView: UIImageView!
     @IBOutlet weak var cameraLabel: UILabel!
     
     func configue(with photo: Photo) {
