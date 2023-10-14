@@ -17,7 +17,7 @@ final class PhotosCollectionViewCell: UICollectionViewCell {
     }
     
     @IBOutlet private weak var photoImageView: UIImageView!
-    @IBOutlet private weak var photoLabel: UILabel!
+    @IBOutlet weak var photoLabel: UILabel!
     
     func configure(with photo: Photo) {
         photoLabel.text = photo.camera.cameraName

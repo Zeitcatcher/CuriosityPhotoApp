@@ -17,8 +17,8 @@ final class CamerasCollectionViewController: UIViewController {
         }
     }
     
-    var uniqueCameras = Set<String>()
-    var tappedCameraLabelText = ""
+    private var uniqueCameras = Set<String>()
+    private var tappedCameraLabelText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

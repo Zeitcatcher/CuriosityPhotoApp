@@ -2,12 +2,8 @@
 //  Photo.swift
 //  CuriosityPhotoApp
 //
-//  Created by Arseniy Oksenoyt on 9/18/23.
+//  Created by Arseniy Oksenoyt on 10/13/23.
 //
-
-struct PhotoCollection: Codable {
-    let photos: [Photo]
-}
 
 struct Photo: Codable {
     let camera: Camera
@@ -22,3 +18,4 @@ struct Photo: Codable {
         case rover = "rover"
     }
 }
+
