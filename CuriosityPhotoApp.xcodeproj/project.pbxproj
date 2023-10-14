@@ -21,6 +21,7 @@
 		D993C67E2ACFB9AC002D2008 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993C67D2ACFB9AC002D2008 /* PhotosCollectionViewCell.swift */; };
 		D9D1E2932ABD47B70061417C /* CamerasCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D1E2922ABD47B70061417C /* CamerasCollectionViewCell.swift */; };
 		D9EEA0502ABAA753000E0661 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EEA04F2ABAA753000E0661 /* NetworkManager.swift */; };
+		D9FCD4BE2ADA5E9700B832BA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCD4BD2ADA5E9700B832BA /* Storyboarded.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		D993C67D2ACFB9AC002D2008 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		D9D1E2922ABD47B70061417C /* CamerasCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasCollectionViewCell.swift; sourceTree = "<group>"; };
 		D9EEA04F2ABAA753000E0661 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D9FCD4BD2ADA5E9700B832BA /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				D93B5A7C2AB8029E00048DED /* Storyboards */,
 				D93B5A7D2AB802B900048DED /* Resources */,
 				D927B3252AB924FA008B22F4 /* Models */,
+				D9FCD4BF2ADA5E9A00B832BA /* Protocols */,
 			);
 			path = CuriosityPhotoApp;
 			sourceTree = "<group>";
@@ -137,6 +140,14 @@
 				D9EEA04F2ABAA753000E0661 /* NetworkManager.swift */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		D9FCD4BF2ADA5E9A00B832BA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D9FCD4BD2ADA5E9700B832BA /* Storyboarded.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +232,7 @@
 				D93B5A692AB8024B00048DED /* SceneDelegate.swift in Sources */,
 				D9D1E2932ABD47B70061417C /* CamerasCollectionViewCell.swift in Sources */,
 				D91655232ADA4AAB009FDA60 /* Camera.swift in Sources */,
+				D9FCD4BE2ADA5E9700B832BA /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

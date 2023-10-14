@@ -49,13 +49,11 @@ final class CamerasCollectionViewController: UIViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let currentCell = collectionView.cellForItem(at: indexPath) as? CamerasCollectionViewCell else { return }
+        let photoVC = PhotoCollectionViewController.instantiate()
+        
         tappedCameraLabelText = currentCell.cameraLabel.text ?? ""
-        performSegue(withIdentifier: "detailsSegue", sender: photos)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let photoCollectionView = segue.destination as? PhotoCollectionViewController else { return }
-        photoCollectionView.configure(with: photos, and: tappedCameraLabelText)
+        photoVC.configure(with: photos, and: tappedCameraLabelText)
+        present(photoVC, animated: true, completion: nil)
     }
 }
 
