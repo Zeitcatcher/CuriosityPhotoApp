@@ -71,7 +71,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="camerasCollectionVewController" destination="63C-77-ft9" id="T5s-r0-LEY"/>
-                        <segue destination="xYF-jx-VXl" kind="presentation" identifier="detailsSegue" id="gM2-c7-RlD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -83,11 +82,11 @@
             <objects>
                 <viewController storyboardIdentifier="PhotoCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xYF-jx-VXl" customClass="PhotoCollectionViewController" customModule="CuriosityPhotoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nru-ON-Q8l">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-wq-l8m">
-                                <rect key="frame" x="20" y="276.66666666666669" width="390" height="645.33333333333326"/>
+                                <rect key="frame" x="20" y="245.66666666666669" width="390" height="652.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xQH-Se-N6k">
                                     <size key="itemSize" width="128" height="128"/>
@@ -124,7 +123,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW9-ZW-HfI">
-                                <rect key="frame" x="16" y="128" width="398" height="48"/>
+                                <rect key="frame" x="24" y="187" width="382" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -136,8 +135,8 @@
                             <constraint firstItem="Y6y-wq-l8m" firstAttribute="leading" secondItem="slG-Cv-5l0" secondAttribute="leading" constant="20" id="3ff-vb-QJD"/>
                             <constraint firstItem="slG-Cv-5l0" firstAttribute="trailing" secondItem="Y6y-wq-l8m" secondAttribute="trailing" constant="20" id="490-NN-EmG"/>
                             <constraint firstItem="rW9-ZW-HfI" firstAttribute="top" secondItem="slG-Cv-5l0" secondAttribute="top" constant="128" id="BMS-De-lui"/>
-                            <constraint firstItem="rW9-ZW-HfI" firstAttribute="leading" secondItem="slG-Cv-5l0" secondAttribute="leading" constant="16" id="KOV-71-pct"/>
-                            <constraint firstItem="slG-Cv-5l0" firstAttribute="trailing" secondItem="rW9-ZW-HfI" secondAttribute="trailing" constant="16" id="eye-mV-VeV"/>
+                            <constraint firstItem="rW9-ZW-HfI" firstAttribute="leading" secondItem="slG-Cv-5l0" secondAttribute="leading" constant="24" id="KOV-71-pct"/>
+                            <constraint firstItem="slG-Cv-5l0" firstAttribute="trailing" secondItem="rW9-ZW-HfI" secondAttribute="trailing" constant="24" id="eye-mV-VeV"/>
                             <constraint firstItem="Y6y-wq-l8m" firstAttribute="height" secondItem="Nru-ON-Q8l" secondAttribute="height" multiplier="0.7" id="g28-FW-yAM"/>
                             <constraint firstItem="Y6y-wq-l8m" firstAttribute="bottom" secondItem="slG-Cv-5l0" secondAttribute="bottom" id="hTd-Vc-S4i"/>
                         </constraints>

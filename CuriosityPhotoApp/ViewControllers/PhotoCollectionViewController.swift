@@ -37,7 +37,7 @@ final class PhotoCollectionViewController: UIViewController {
     }
 }
 //MARK: - Collection View Delegate, Collection View DataSource
-extension PhotoCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension PhotoCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate, Storyboarded {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         filteredPhotos.count
     }
