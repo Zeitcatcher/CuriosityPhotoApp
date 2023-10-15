@@ -23,7 +23,18 @@ final class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
-    func fetch<T: Decodable>(_ type: T.Type, from url: String, complition: @escaping(Result<T, NetworkError>) -> Void) {
+    func fetchPhotos(completion: @escaping(Result<PhotoCollection, NetworkError>) -> Void) {
+        fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { result in
+            switch result {
+            case .success(let photoCollection):
+                completion(.success(photoCollection))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func fetch<T: Decodable>(_ type: T.Type, from url: String, complition: @escaping(Result<T, NetworkError>) -> Void) {
         guard let url = URL(string: url) else {
             complition(.failure(.invalidURL))
             return

@@ -27,7 +27,7 @@ final class CamerasCollectionViewController: UIViewController {
     }
     
     private func fetchPhotos() {
-        NetworkManager.shared.fetch(PhotoCollection.self, from: JsonURL.nasa.rawValue) { [ weak self ] result in
+        NetworkManager.shared.fetchPhotos { [ weak self ] result in
             switch result {
             case .success(let photoCollection):
                 print("Photos fetched succesfully")
