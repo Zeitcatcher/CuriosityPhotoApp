@@ -13,7 +13,7 @@ final class CamerasCollectionViewController: UIViewController {
     
     private var photos: [Photo] = [] {
         didSet {
-            photos.forEach { uniqueCameras.insert( $0.camera.cameraName) }
+            photos.forEach { uniqueCameras.insert( $0.camera.cameraName )}
         }
     }
     

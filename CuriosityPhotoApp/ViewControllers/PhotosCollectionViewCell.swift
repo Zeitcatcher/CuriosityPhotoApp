@@ -30,10 +30,16 @@ final class PhotosCollectionViewCell: UICollectionViewCell {
 //MARK: - Private Methods
 extension PhotosCollectionViewCell {
     private func getImage(from url: URL, complition: @escaping(Result<UIImage, Error>) -> Void) {
+        if let cacheImage = ImageCacheManager.shared.object(forKey: url.lastPathComponent as NSString) {
+            complition(.success(cacheImage))
+            return
+        }
+        
         NetworkManager.shared.fetchImage(from: url) { result in
             switch result {
             case .success(let imageData):
                 guard let uiImage = UIImage(data: imageData) else { return }
+                ImageCacheManager.shared.setObject(uiImage, forKey: url.lastPathComponent as NSString)
                 print("Image from network: ", url.lastPathComponent)
                 complition(.success(uiImage))
             case .failure(let error):
