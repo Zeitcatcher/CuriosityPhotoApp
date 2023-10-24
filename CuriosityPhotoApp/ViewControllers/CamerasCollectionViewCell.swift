@@ -9,6 +9,9 @@ import UIKit
 
 final class CamerasCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet private weak var cameraImageView: UIImageView!
+    @IBOutlet weak var cameraLabel: UILabel!
+    
     private var imageURL: URL? {
         didSet {
             cameraImageView.image = nil
@@ -16,14 +19,15 @@ final class CamerasCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @IBOutlet private weak var cameraImageView: UIImageView!
-    @IBOutlet weak var cameraLabel: UILabel!
+    private var activityIndicator: UIActivityIndicatorView?
     
     func configue(with photo: Photo) {
         cameraLabel.text = photo.camera.cameraName
         imageURL = URL(string: photo.imageURL)
         cameraImageView.layer.cornerRadius = 20
         setupViews()
+        activityIndicator = ActivityIndicator().showSpinner(in: cameraImageView)
+        layoutActivityIndicator()
     }
 }
 
@@ -32,6 +36,7 @@ extension CamerasCollectionViewCell {
     private func getImage(from url: URL, complition: @escaping(Result<UIImage, Error>) -> Void) {
         if let cacheImage = ImageCacheManager.shared.object(forKey: url.lastPathComponent as NSString) {
             complition(.success(cacheImage))
+            activityIndicator?.stopAnimating()
             return
         }
         
@@ -42,6 +47,7 @@ extension CamerasCollectionViewCell {
                 ImageCacheManager.shared.setObject(uiImage, forKey: url.lastPathComponent as NSString)
                 print("Image from network: ", url.lastPathComponent)
                 complition(.success(uiImage))
+                self.activityIndicator?.stopAnimating()
             case .failure(let error):
                 print(error)
             }
@@ -54,6 +60,7 @@ extension CamerasCollectionViewCell {
             switch result {
             case .success(let image):
                 self?.cameraImageView.image = image
+                self?.activityIndicator?.stopAnimating()
             case .failure(let error):
                 print(error)
             }
@@ -89,6 +96,15 @@ extension CamerasCollectionViewCell {
             cameraLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3),
             cameraLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             cameraLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+        ])
+    }
+    
+    private func layoutActivityIndicator() {
+        guard let activityIndicator = activityIndicator else { return }
+        
+        NSLayoutConstraint.activate([
+                    activityIndicator.centerXAnchor.constraint(equalTo: cameraImageView.centerXAnchor),
+                    activityIndicator.centerYAnchor.constraint(equalTo: cameraImageView.centerYAnchor)
         ])
     }
 }

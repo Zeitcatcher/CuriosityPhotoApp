@@ -9,21 +9,24 @@ import UIKit
 
 final class PhotosCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet private weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoLabel: UILabel!
+    
     private var imageURL: URL? {
         didSet {
             photoImageView.image = nil
             updateImage()
         }
     }
-    
-    @IBOutlet private weak var photoImageView: UIImageView!
-    @IBOutlet weak var photoLabel: UILabel!
+    private var activityIndicator: UIActivityIndicatorView?
     
     func configure(with photo: Photo) {
         photoLabel.text = photo.camera.cameraName
         imageURL = URL(string: photo.imageURL)
         photoImageView.layer.cornerRadius = 20
         setupViews()
+        activityIndicator = ActivityIndicator().showSpinner(in: photoImageView)
+        layoutActivityIndicator()
     }
 }
 
@@ -32,6 +35,7 @@ extension PhotosCollectionViewCell {
     private func getImage(from url: URL, complition: @escaping(Result<UIImage, Error>) -> Void) {
         if let cacheImage = ImageCacheManager.shared.object(forKey: url.lastPathComponent as NSString) {
             complition(.success(cacheImage))
+            self.activityIndicator?.stopAnimating()
             return
         }
         
@@ -42,6 +46,7 @@ extension PhotosCollectionViewCell {
                 ImageCacheManager.shared.setObject(uiImage, forKey: url.lastPathComponent as NSString)
                 print("Image from network: ", url.lastPathComponent)
                 complition(.success(uiImage))
+                self.activityIndicator?.stopAnimating()
             case .failure(let error):
                 print(error)
             }
@@ -54,6 +59,7 @@ extension PhotosCollectionViewCell {
             switch result {
             case .success(let image):
                 self?.photoImageView.image = image
+                self?.activityIndicator?.stopAnimating()
             case .failure(let error):
                 print(error)
             }
@@ -92,6 +98,15 @@ extension PhotosCollectionViewCell {
             photoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             photoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             photoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+    }
+    
+    private func layoutActivityIndicator() {
+        guard let activityIndicator = activityIndicator else { return }
+  
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: photoImageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: photoImageView.centerYAnchor)
         ])
     }
 }
