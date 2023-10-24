@@ -7,9 +7,9 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+final class DetailsViewController: UIViewController {
 
-    var image: Photo!
+    var photo: Photo!
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var photoLabel: UITextView!
@@ -18,6 +18,10 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    private func setupDetailsVC() {
+    }
 }
+
 
 extension DetailsViewController: Storyboarded {}

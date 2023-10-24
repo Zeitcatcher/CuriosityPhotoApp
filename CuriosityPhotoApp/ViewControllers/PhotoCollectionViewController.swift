@@ -60,8 +60,7 @@ extension PhotoCollectionViewController: UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsVC = DetailsViewController.instantiate()
         
-        detailsVC.image = filteredPhotos[indexPath.item]
+        detailsVC.photo = filteredPhotos[indexPath.item]
         navigationController?.pushViewController(detailsVC, animated: true)
-//        present(detailsVC, animated: true, completion: nil)
     }
 }

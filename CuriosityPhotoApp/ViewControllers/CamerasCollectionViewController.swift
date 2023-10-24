@@ -72,7 +72,7 @@ extension CamerasCollectionViewController: UICollectionViewDataSource {
         
         tappedCameraLabelText = currentCell.cameraLabel.text ?? ""
         photoVC.configure(with: photos, and: tappedCameraLabelText)
-        present(photoVC, animated: true, completion: nil)
+        navigationController?.pushViewController(photoVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
