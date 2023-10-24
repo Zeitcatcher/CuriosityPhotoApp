@@ -10,6 +10,7 @@
 		D91655232ADA4AAB009FDA60 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91655222ADA4AAB009FDA60 /* Camera.swift */; };
 		D91655252ADA4ACA009FDA60 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91655242ADA4ACA009FDA60 /* Rover.swift */; };
 		D91655272ADA4D25009FDA60 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91655262ADA4D25009FDA60 /* Photo.swift */; };
+		D9248E3D2AE742B800658339 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9248E3C2AE742B800658339 /* DetailsViewController.swift */; };
 		D927B3242AB924F6008B22F4 /* PhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D927B3232AB924F6008B22F4 /* PhotoCollection.swift */; };
 		D93B5A672AB8024B00048DED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B5A662AB8024B00048DED /* AppDelegate.swift */; };
 		D93B5A692AB8024B00048DED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93B5A682AB8024B00048DED /* SceneDelegate.swift */; };
@@ -30,6 +31,7 @@
 		D91655222ADA4AAB009FDA60 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		D91655242ADA4ACA009FDA60 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		D91655262ADA4D25009FDA60 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		D9248E3C2AE742B800658339 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		D927B3232AB924F6008B22F4 /* PhotoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollection.swift; sourceTree = "<group>"; };
 		D93B5A632AB8024B00048DED /* CuriosityPhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuriosityPhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93B5A662AB8024B00048DED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				D9D1E2922ABD47B70061417C /* CamerasCollectionViewCell.swift */,
 				D993C67B2ACFB41D002D2008 /* PhotoCollectionViewController.swift */,
 				D993C67D2ACFB9AC002D2008 /* PhotosCollectionViewCell.swift */,
+				D9248E3C2AE742B800658339 /* DetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				D9D1E2932ABD47B70061417C /* CamerasCollectionViewCell.swift in Sources */,
 				D91655232ADA4AAB009FDA60 /* Camera.swift in Sources */,
 				D9FCD4BE2ADA5E9700B832BA /* Storyboarded.swift in Sources */,
+				D9248E3D2AE742B800658339 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
