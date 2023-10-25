@@ -32,6 +32,19 @@ final class PhotosCollectionViewCell: UICollectionViewCell {
 
 //MARK: - Private Methods
 extension PhotosCollectionViewCell {
+    private func updateImage() {
+        guard let imageURL = imageURL else { return }
+        getImage(from: imageURL) { [ weak self ] result in
+            switch result {
+            case .success(let image):
+                self?.photoImageView.image = image
+                self?.activityIndicator?.stopAnimating()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     private func getImage(from url: URL, complition: @escaping(Result<UIImage, Error>) -> Void) {
         if let cacheImage = ImageCacheManager.shared.object(forKey: url.lastPathComponent as NSString) {
             complition(.success(cacheImage))
@@ -47,19 +60,6 @@ extension PhotosCollectionViewCell {
                 print("Image from network: ", url.lastPathComponent)
                 complition(.success(uiImage))
                 self.activityIndicator?.stopAnimating()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    private func updateImage() {
-        guard let imageURL = imageURL else { return }
-        getImage(from: imageURL) { [ weak self ] result in
-            switch result {
-            case .success(let image):
-                self?.photoImageView.image = image
-                self?.activityIndicator?.stopAnimating()
             case .failure(let error):
                 print(error)
             }

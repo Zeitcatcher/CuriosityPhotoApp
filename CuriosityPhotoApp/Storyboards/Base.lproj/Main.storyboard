@@ -86,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-wq-l8m">
-                                <rect key="frame" x="20" y="245.66666666666669" width="390" height="652.33333333333326"/>
+                                <rect key="frame" x="20" y="183" width="390" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xQH-Se-N6k">
                                     <size key="itemSize" width="128" height="128"/>
@@ -123,7 +123,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW9-ZW-HfI">
-                                <rect key="frame" x="24" y="231" width="382" height="48"/>
+                                <rect key="frame" x="24" y="115" width="382" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -134,11 +134,11 @@
                         <constraints>
                             <constraint firstItem="Y6y-wq-l8m" firstAttribute="leading" secondItem="slG-Cv-5l0" secondAttribute="leading" constant="20" id="3ff-vb-QJD"/>
                             <constraint firstItem="slG-Cv-5l0" firstAttribute="trailing" secondItem="Y6y-wq-l8m" secondAttribute="trailing" constant="20" id="490-NN-EmG"/>
-                            <constraint firstItem="rW9-ZW-HfI" firstAttribute="top" secondItem="slG-Cv-5l0" secondAttribute="top" constant="128" id="BMS-De-lui"/>
                             <constraint firstItem="rW9-ZW-HfI" firstAttribute="leading" secondItem="slG-Cv-5l0" secondAttribute="leading" constant="24" id="KOV-71-pct"/>
+                            <constraint firstItem="Y6y-wq-l8m" firstAttribute="top" secondItem="rW9-ZW-HfI" secondAttribute="bottom" constant="20" id="L4f-Zw-y6g"/>
                             <constraint firstItem="slG-Cv-5l0" firstAttribute="trailing" secondItem="rW9-ZW-HfI" secondAttribute="trailing" constant="24" id="eye-mV-VeV"/>
-                            <constraint firstItem="Y6y-wq-l8m" firstAttribute="height" secondItem="Nru-ON-Q8l" secondAttribute="height" multiplier="0.7" id="g28-FW-yAM"/>
                             <constraint firstItem="Y6y-wq-l8m" firstAttribute="bottom" secondItem="slG-Cv-5l0" secondAttribute="bottom" id="hTd-Vc-S4i"/>
+                            <constraint firstItem="Y6y-wq-l8m" firstAttribute="height" secondItem="Nru-ON-Q8l" secondAttribute="height" multiplier="0.767167" id="lgw-mu-thu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UTE-lA-rIn"/>
@@ -159,7 +159,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yUK-eg-TVr">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yUK-eg-TVr">
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="518"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6Q-6g-XcV">
@@ -168,17 +168,23 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-i2-6mf">
                                         <rect key="frame" x="24" y="72" width="382" height="290"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gB3-kb-7lW">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gB3-kb-7lW">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="127"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BkR-HK-qB3">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkR-HK-qB3">
                                                 <rect key="frame" x="0.0" y="163" width="382" height="127"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -210,6 +216,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="e6Q-6g-XcV" id="A40-on-b7I"/>
                         <outlet property="cameraLabel" destination="BkR-HK-qB3" id="jHi-8a-MtW"/>
                         <outlet property="photoImageView" destination="yUK-eg-TVr" id="9ha-Dw-dkA"/>
                         <outlet property="photoLabel" destination="gB3-kb-7lW" id="nuX-dD-pao"/>
